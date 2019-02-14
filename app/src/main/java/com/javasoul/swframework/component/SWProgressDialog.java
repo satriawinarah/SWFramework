@@ -1,4 +1,4 @@
-package com.javasoul.swframework;
+package com.javasoul.swframework.component;
 
 import android.app.ProgressDialog;
 import android.content.Context;

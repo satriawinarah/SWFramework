@@ -5,7 +5,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
-import android.widget.Toast;
+
+import com.javasoul.swframework.component.SWProgressDialog;
+import com.javasoul.swframework.component.SWToast;
 
 public class MainActivity extends AppCompatActivity {
 

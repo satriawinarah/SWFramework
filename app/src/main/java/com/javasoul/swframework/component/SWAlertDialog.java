@@ -1,8 +1,10 @@
-package com.javasoul.swframework;
+package com.javasoul.swframework.component;
 
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+
+import com.javasoul.swframework.R;
 
 public class SWAlertDialog {
 

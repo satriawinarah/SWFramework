@@ -1,10 +1,12 @@
-package com.javasoul.swframework;
+package com.javasoul.swframework.component;
 
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import com.javasoul.swframework.R;
 
 public class SWEditText {
 
