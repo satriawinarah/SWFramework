@@ -44,14 +44,21 @@ public class MainActivity extends AppCompatActivity {
         btnError.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SWToast.showLongError(MainActivity.this, "Test akkhfjhkas fhskfh jakhfa ");
+                final SWProgressDialog progressDialog = new SWProgressDialog(MainActivity.this);
+                progressDialog.showProgress(true);
+                progressDialog.setProgress(10);
+                progressDialog.setProgress(10);
+                progressDialog.setProgress(10);
+                progressDialog.setProgress(10);
+                progressDialog.setProgress(10);
+                progressDialog.setProgress(10);
             }
         });
 
         btnInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SWToast.showLongInfo(MainActivity.this, "Test akkhfjhkas fhskfh jakhfa ");
+
             }
         });
 
