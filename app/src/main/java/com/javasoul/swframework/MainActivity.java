@@ -2,6 +2,7 @@ package com.javasoul.swframework;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -50,14 +51,7 @@ public class MainActivity extends AppCompatActivity {
         btnError.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final SWProgressDialog progressDialog = new SWProgressDialog(MainActivity.this);
-                progressDialog.showProgress(true);
-                progressDialog.setProgress(10);
-                progressDialog.setProgress(10);
-                progressDialog.setProgress(10);
-                progressDialog.setProgress(10);
-                progressDialog.setProgress(10);
-                progressDialog.setProgress(10);
+                Log.e("TEST", new TestStorage(null).createTable());
             }
         });
 
