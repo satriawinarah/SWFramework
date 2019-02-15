@@ -87,4 +87,68 @@ public class SWToast {
         toast.show();
     }
 
+    public static void showSaveSuccess(Context context) {
+        showSuccess(context, Toast.LENGTH_SHORT, "Save");
+    }
+
+    public static void showDeleteSuccess(Context context) {
+        showSuccess(context, Toast.LENGTH_SHORT, "Delete");
+    }
+
+    public static void showUpdateSuccess(Context context) {
+        showSuccess(context, Toast.LENGTH_SHORT, "Update");
+    }
+
+    private static void showSuccess(Context context, int duration, String prefix) {
+        View view = LayoutInflater.from(context).inflate(R.layout.sw_toast, null, false);
+        view.setBackground(context.getResources().getDrawable(R.drawable.toast_background_success));
+
+        ImageView icon = view.findViewById(R.id.toast_icon);
+        icon.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_success));
+        TextView message = view.findViewById(R.id.toast_message);
+        message.setText(prefix + " success");
+        message.setTextColor(context.getResources().getColor(android.R.color.white));
+
+        Toast toast = new Toast(context);
+        toast.setView(view);
+        toast.setDuration(duration);
+        toast.show();
+    }
+
+    public static void showSaveFailed(Context context) {
+        showSuccess(context, Toast.LENGTH_SHORT, "Save");
+    }
+
+    public static void showDeleteFailed(Context context) {
+        showSuccess(context, Toast.LENGTH_SHORT, "Delete");
+    }
+
+    public static void showUpdateFailed(Context context) {
+        showSuccess(context, Toast.LENGTH_SHORT, "Update");
+    }
+
+    private static void showFailed(Context context, int duration, String prefix) {
+        View view = LayoutInflater.from(context).inflate(R.layout.sw_toast, null, false);
+        view.setBackground(context.getResources().getDrawable(R.drawable.toast_background_error));
+
+        ImageView icon = view.findViewById(R.id.toast_icon);
+        icon.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_failed));
+        TextView message = view.findViewById(R.id.toast_message);
+        message.setText(prefix + " failed");
+        message.setTextColor(context.getResources().getColor(android.R.color.white));
+
+        Toast toast = new Toast(context);
+        toast.setView(view);
+        toast.setDuration(duration);
+        toast.show();
+    }
+
+    public static void showDefaultShort(Context context, String message) {
+        Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
+    }
+
+    public static void showDefaultLong(Context context, String message) {
+        Toast.makeText(context, message, Toast.LENGTH_LONG).show();
+    }
+
 }
