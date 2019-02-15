@@ -8,6 +8,10 @@ import android.widget.LinearLayout;
 
 import com.javasoul.swframework.component.SWProgressDialog;
 import com.javasoul.swframework.component.SWToast;
+import com.javasoul.swframework.utils.SWListUtil;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
