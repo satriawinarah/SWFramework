@@ -22,22 +22,26 @@ public class SWEditText {
 
     private EditText editText;
 
-    public SWEditText(Context context, int id) {
+    public SWEditText(Context context, int id, Integer layout) {
         this.id = id;
-        define(context);
+        define(context, layout);
     }
 
-    public SWEditText(Context context, String code) {
+    public SWEditText(Context context, String code, Integer layout) {
         this.code = code;
-        define(context);
+        define(context, layout);
     }
 
-    public SWEditText(Context context) {
-        define(context);
+    public SWEditText(Context context, Integer layout) {
+        define(context, layout);
     }
 
-    private void define(Context context) {
-        swEditText = LayoutInflater.from(context).inflate(R.layout.sw_edit_text, null, false);
+    private void define(Context context, Integer layout) {
+        if(layout != null) {
+            swEditText = LayoutInflater.from(context).inflate(layout, null, false);
+        } else {
+            swEditText = LayoutInflater.from(context).inflate(R.layout.sw_edit_text, null, false);
+        }
 
         txtTitle = swEditText.findViewById(R.id.txt_title);
         txtError = swEditText.findViewById(R.id.txt_error);

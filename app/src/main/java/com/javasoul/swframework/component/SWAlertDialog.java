@@ -14,7 +14,7 @@ public class SWAlertDialog {
 
     public static void alert(Context context, String message) {
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
-        builder.setIcon(context.getResources().getDrawable(R.drawable.ic_error));
+        builder.setIcon(context.getResources().getDrawable(R.drawable.ic_info));
         builder.setMessage(message);
         builder.setCancelable(true);
 
