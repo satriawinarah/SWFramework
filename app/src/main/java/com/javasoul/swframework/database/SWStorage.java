@@ -6,7 +6,7 @@ import java.util.List;
 
 public abstract class SWStorage<T> {
 
-    private SQLiteDatabase db;
+    public SQLiteDatabase db;
 
     public SWStorage(SQLiteDatabase db) {
         this.db = db;

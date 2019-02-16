@@ -7,12 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
-import com.javasoul.swframework.component.SWProgressDialog;
 import com.javasoul.swframework.component.SWToast;
-import com.javasoul.swframework.utils.SWListUtil;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -35,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
         swEditText.setId(123);
         swEditText.setCode("123");
         swEditText.setTitle("TEst");
-        swEditText.setError("Test");
+        swEditText.setError("SWTest");
         swEditText.setDescription("test");
 
         final SWEditText swEditText2 = new SWEditText(this);
@@ -51,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
         btnError.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.e("TEST", new TestStorage(null).createTable());
+                Log.e("TEST", new SWTestStorage(null).createTable());
             }
         });
 
@@ -65,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
         btnWarning.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SWToast.showLongWarning(MainActivity.this, "Test akkhfjhkas fhskfh jakhfa ");
+                SWToast.showLongWarning(MainActivity.this, "SWTest akkhfjhkas fhskfh jakhfa ");
             }
         });
     }

@@ -5,13 +5,9 @@ import android.content.ContentValues;
 import com.javasoul.swframework.model.SWFieldColumn;
 import com.javasoul.swframework.utils.SWUtils;
 
-import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 public class SWSQLParser {
 
@@ -45,6 +41,72 @@ public class SWSQLParser {
         }
     }
 
+    public static class Insert {
+
+        String tableName;
+        Object classObject;
+
+        public Insert(String tableName, Object classObject) {
+            this.tableName = tableName;
+            this.classObject = classObject;
+        }
+
+        public ContentValues build() throws IllegalAccessException {
+            List<SWFieldColumn> fields = SWUtils.getFieldsFromClass(classObject);
+            ContentValues contentValues = new ContentValues();
+
+            for(SWFieldColumn field: fields) {
+                contentValues.put(field.getColumnName(), field.getValue().toString());
+            }
+
+            return contentValues;
+        }
+
+        public ContentValues build(SWFieldColumn... fields) throws IllegalAccessException {
+            ContentValues contentValues = new ContentValues();
+
+            for(SWFieldColumn field: fields) {
+                contentValues.put(field.getColumnName(), field.getValue().toString());
+            }
+
+            return contentValues;
+        }
+
+    }
+
+    public static class Update {
+
+        String tableName;
+        Object classObject;
+
+        public Update(String tableName, Object classObject) {
+            this.tableName = tableName;
+            this.classObject = classObject;
+        }
+
+        public ContentValues build() throws IllegalAccessException {
+            List<SWFieldColumn> fields = SWUtils.getFieldsFromClass(classObject);
+            ContentValues contentValues = new ContentValues();
+
+            for(SWFieldColumn field: fields) {
+                contentValues.put(field.getColumnName(), field.getValue().toString());
+            }
+
+            return contentValues;
+        }
+
+        public ContentValues build(SWFieldColumn... fields) throws IllegalAccessException {
+            ContentValues contentValues = new ContentValues();
+
+            for(SWFieldColumn field: fields) {
+                contentValues.put(field.getColumnName(), field.getValue().toString());
+            }
+
+            return contentValues;
+        }
+
+    }
+
     public static class CreateTable {
 
         String tableName;
@@ -57,7 +119,7 @@ public class SWSQLParser {
 
         public String build() throws IllegalAccessException{
             StringBuilder statement = new StringBuilder();
-            List<SWFieldColumn> fields = getFieldsFromClass(classObject);
+            List<SWFieldColumn> fields = SWUtils.getFieldsFromClass(classObject);
             List<String> columns = new ArrayList<>();
 
             for(SWFieldColumn field: fields) {
@@ -93,21 +155,6 @@ public class SWSQLParser {
             }
 
             return column.toString();
-        }
-
-        public List<SWFieldColumn> getFieldsFromClass(Object classObject) throws IllegalAccessException {
-            Set<SWFieldColumn> fields = new HashSet<>();
-            Class cls = classObject.getClass();
-            while (cls != null) {
-                for (Field field : classObject.getClass().getDeclaredFields()) {
-                    Object value = field.get(classObject);
-                    fields.add((SWFieldColumn) value);
-                }
-
-                cls = cls.getSuperclass();
-            }
-
-            return new ArrayList<>(fields);
         }
 
     }
