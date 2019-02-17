@@ -5,7 +5,8 @@ import android.util.Log;
 public class SWLog {
 
     public static void e(Class cls, String message) {
-        Log.e(cls.getSimpleName(), "Error : " + message);
+        int lineNumber = Thread.currentThread().getStackTrace()[2].getLineNumber();
+        Log.e(cls.getSimpleName() + ": " + lineNumber, "Error : " + message);
     }
 
     public static void e(Class cls, String functionName, String message) {
@@ -14,7 +15,8 @@ public class SWLog {
     }
 
     public static void d(Class cls, String message) {
-        Log.e(cls.getSimpleName(), "Debug : " + message);
+        int lineNumber = Thread.currentThread().getStackTrace()[2].getLineNumber();
+        Log.e(cls.getSimpleName() + ": " + lineNumber, "Debug : " + message);
     }
 
     public static void d(Class cls, String functionName, String message) {
