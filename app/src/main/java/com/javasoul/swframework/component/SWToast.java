@@ -116,15 +116,15 @@ public class SWToast {
     }
 
     public static void showSaveFailed(Context context) {
-        showSuccess(context, Toast.LENGTH_SHORT, "Save");
+        showFailed(context, Toast.LENGTH_SHORT, "Save");
     }
 
     public static void showDeleteFailed(Context context) {
-        showSuccess(context, Toast.LENGTH_SHORT, "Delete");
+        showFailed(context, Toast.LENGTH_SHORT, "Delete");
     }
 
     public static void showUpdateFailed(Context context) {
-        showSuccess(context, Toast.LENGTH_SHORT, "Update");
+        showFailed(context, Toast.LENGTH_SHORT, "Update");
     }
 
     private static void showFailed(Context context, int duration, String prefix) {
