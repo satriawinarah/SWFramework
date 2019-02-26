@@ -23,7 +23,7 @@ public class SWToast {
         showError(context, Toast.LENGTH_LONG, error);
     }
 
-    private static void showError(Context context, int duration, String error) {
+    public static void showError(Context context, int duration, String error) {
         View view = LayoutInflater.from(context).inflate(R.layout.sw_toast, null, false);
         view.setBackground(context.getResources().getDrawable(R.drawable.toast_background_error));
 
@@ -47,7 +47,7 @@ public class SWToast {
         showInfo(context, Toast.LENGTH_LONG, info);
     }
 
-    private static void showInfo(Context context, int duration, String info) {
+    public static void showInfo(Context context, int duration, String info) {
         View view = LayoutInflater.from(context).inflate(R.layout.sw_toast, null, false);
         view.setBackground(context.getResources().getDrawable(R.drawable.toast_background_info));
 
@@ -71,7 +71,7 @@ public class SWToast {
         showWarning(context, Toast.LENGTH_LONG, warning);
     }
 
-    private static void showWarning(Context context, int duration, String warning) {
+    public static void showWarning(Context context, int duration, String warning) {
         View view = LayoutInflater.from(context).inflate(R.layout.sw_toast, null, false);
         view.setBackground(context.getResources().getDrawable(R.drawable.toast_background_warning));
 
@@ -99,7 +99,7 @@ public class SWToast {
         showSuccess(context, Toast.LENGTH_SHORT, "Update");
     }
 
-    private static void showSuccess(Context context, int duration, String prefix) {
+    public static void showSuccess(Context context, int duration, String prefix) {
         View view = LayoutInflater.from(context).inflate(R.layout.sw_toast, null, false);
         view.setBackground(context.getResources().getDrawable(R.drawable.toast_background_success));
 
@@ -127,7 +127,7 @@ public class SWToast {
         showFailed(context, Toast.LENGTH_SHORT, "Update");
     }
 
-    private static void showFailed(Context context, int duration, String prefix) {
+    public static void showFailed(Context context, int duration, String prefix) {
         View view = LayoutInflater.from(context).inflate(R.layout.sw_toast, null, false);
         view.setBackground(context.getResources().getDrawable(R.drawable.toast_background_error));
 
