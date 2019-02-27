@@ -38,11 +38,6 @@ public class SWSharedPreference {
         sharedPreferences.edit().putLong(id, value).commit();
     }
 
-    public static void saveList(String id, Set<String> values) {
-        SharedPreferences sharedPreferences = context.getSharedPreferences(sharedPreferenceName, Context.MODE_PRIVATE);
-        sharedPreferences.edit().putStringSet(id, values).commit();
-    }
-
     public static void saves(List<SWIdValue> data) {
         SharedPreferences sharedPreferences = context.getSharedPreferences(sharedPreferenceName, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -75,6 +70,16 @@ public class SWSharedPreference {
     public static Long getLong(String id) {
         SharedPreferences sharedPreferences = context.getSharedPreferences(sharedPreferenceName, Context.MODE_PRIVATE);
         return sharedPreferences.getLong(id, 0l);
+    }
+
+    public static void remove(String id) {
+        SharedPreferences sharedPreferences = context.getSharedPreferences(sharedPreferenceName, Context.MODE_PRIVATE);
+        sharedPreferences.edit().remove(id).commit();
+    }
+
+    public static void removeAll() {
+        SharedPreferences sharedPreferences = context.getSharedPreferences(sharedPreferenceName, Context.MODE_PRIVATE);
+        sharedPreferences.edit().clear().apply();
     }
 
 }
