@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
         btnWarning.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SWToast.showLongWarning(MainActivity.this, "SWTest akkhfjhkas fhskfh jakhfa ");
+                SWToast.showLongWarning("SWTest akkhfjhkas fhskfh jakhfa ");
             }
         });
     }

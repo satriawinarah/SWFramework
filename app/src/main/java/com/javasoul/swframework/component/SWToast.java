@@ -11,19 +11,25 @@ import com.javasoul.swframework.R;
 
 public class SWToast {
 
+    private static Context context;
+
     public SWToast() {
 
     }
 
-    public static void showShortError(Context context, String error) {
-        showError(context, Toast.LENGTH_SHORT, error);
+    public static void init(Context ctx) {
+        context = ctx;
     }
 
-    public static void showLongError(Context context, String error) {
-        showError(context, Toast.LENGTH_LONG, error);
+    public static void showShortError(String error) {
+        showError(Toast.LENGTH_SHORT, error);
     }
 
-    public static void showError(Context context, int duration, String error) {
+    public static void showLongError(String error) {
+        showError(Toast.LENGTH_LONG, error);
+    }
+
+    public static void showError(int duration, String error) {
         View view = LayoutInflater.from(context).inflate(R.layout.sw_toast, null, false);
         view.setBackground(context.getResources().getDrawable(R.drawable.toast_background_error));
 
@@ -39,15 +45,15 @@ public class SWToast {
         toast.show();
     }
 
-    public static void showShortInfo(Context context, String info) {
-        showInfo(context, Toast.LENGTH_SHORT, info);
+    public static void showShortInfo(String info) {
+        showInfo(Toast.LENGTH_SHORT, info);
     }
 
-    public static void showLongInfo(Context context, String info) {
-        showInfo(context, Toast.LENGTH_LONG, info);
+    public static void showLongInfo(String info) {
+        showInfo(Toast.LENGTH_LONG, info);
     }
 
-    public static void showInfo(Context context, int duration, String info) {
+    public static void showInfo(int duration, String info) {
         View view = LayoutInflater.from(context).inflate(R.layout.sw_toast, null, false);
         view.setBackground(context.getResources().getDrawable(R.drawable.toast_background_info));
 
@@ -63,15 +69,15 @@ public class SWToast {
         toast.show();
     }
 
-    public static void showShortWarning(Context context, String warning) {
-        showWarning(context, Toast.LENGTH_SHORT, warning);
+    public static void showShortWarning(String warning) {
+        showWarning(Toast.LENGTH_SHORT, warning);
     }
 
-    public static void showLongWarning(Context context, String warning) {
-        showWarning(context, Toast.LENGTH_LONG, warning);
+    public static void showLongWarning(String warning) {
+        showWarning(Toast.LENGTH_LONG, warning);
     }
 
-    public static void showWarning(Context context, int duration, String warning) {
+    public static void showWarning(int duration, String warning) {
         View view = LayoutInflater.from(context).inflate(R.layout.sw_toast, null, false);
         view.setBackground(context.getResources().getDrawable(R.drawable.toast_background_warning));
 
@@ -87,19 +93,19 @@ public class SWToast {
         toast.show();
     }
 
-    public static void showSaveSuccess(Context context) {
-        showSuccess(context, Toast.LENGTH_SHORT, "Save");
+    public static void showSaveSuccess() {
+        showSuccess(Toast.LENGTH_SHORT, "Save");
     }
 
-    public static void showDeleteSuccess(Context context) {
-        showSuccess(context, Toast.LENGTH_SHORT, "Delete");
+    public static void showDeleteSuccess() {
+        showSuccess(Toast.LENGTH_SHORT, "Delete");
     }
 
-    public static void showUpdateSuccess(Context context) {
-        showSuccess(context, Toast.LENGTH_SHORT, "Update");
+    public static void showUpdateSuccess() {
+        showSuccess(Toast.LENGTH_SHORT, "Update");
     }
 
-    public static void showSuccess(Context context, int duration, String prefix) {
+    public static void showSuccess(int duration, String prefix) {
         View view = LayoutInflater.from(context).inflate(R.layout.sw_toast, null, false);
         view.setBackground(context.getResources().getDrawable(R.drawable.toast_background_success));
 
@@ -115,19 +121,19 @@ public class SWToast {
         toast.show();
     }
 
-    public static void showSaveFailed(Context context) {
-        showFailed(context, Toast.LENGTH_SHORT, "Save");
+    public static void showSaveFailed() {
+        showFailed(Toast.LENGTH_SHORT, "Save");
     }
 
-    public static void showDeleteFailed(Context context) {
-        showFailed(context, Toast.LENGTH_SHORT, "Delete");
+    public static void showDeleteFailed() {
+        showFailed(Toast.LENGTH_SHORT, "Delete");
     }
 
-    public static void showUpdateFailed(Context context) {
-        showFailed(context, Toast.LENGTH_SHORT, "Update");
+    public static void showUpdateFailed() {
+        showFailed(Toast.LENGTH_SHORT, "Update");
     }
 
-    public static void showFailed(Context context, int duration, String prefix) {
+    public static void showFailed(int duration, String prefix) {
         View view = LayoutInflater.from(context).inflate(R.layout.sw_toast, null, false);
         view.setBackground(context.getResources().getDrawable(R.drawable.toast_background_error));
 
@@ -143,11 +149,11 @@ public class SWToast {
         toast.show();
     }
 
-    public static void showDefaultShort(Context context, String message) {
+    public static void showDefaultShort(String message) {
         Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
     }
 
-    public static void showDefaultLong(Context context, String message) {
+    public static void showDefaultLong(String message) {
         Toast.makeText(context, message, Toast.LENGTH_LONG).show();
     }
 
