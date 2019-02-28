@@ -112,13 +112,21 @@ public class SWToast {
         ImageView icon = view.findViewById(R.id.toast_icon);
         icon.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_success));
         TextView message = view.findViewById(R.id.toast_message);
-        message.setText(prefix + " success");
+        message.setText(prefix);
         message.setTextColor(context.getResources().getColor(android.R.color.white));
 
         Toast toast = new Toast(context);
         toast.setView(view);
         toast.setDuration(duration);
         toast.show();
+    }
+
+    public static void showLongSuccess(String prefix) {
+        showSuccess(Toast.LENGTH_LONG, prefix);
+    }
+
+    public static void showShortSuccess(String prefix) {
+        showSuccess(Toast.LENGTH_SHORT, prefix);
     }
 
     public static void showSaveFailed() {
