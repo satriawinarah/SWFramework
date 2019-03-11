@@ -93,7 +93,7 @@ public class SWToast {
         toast.show();
     }
 
-    public static void showSaveSuccess() {
+    /*public static void showSaveSuccess() {
         showSuccess(Toast.LENGTH_SHORT, "Save");
     }
 
@@ -103,17 +103,17 @@ public class SWToast {
 
     public static void showUpdateSuccess() {
         showSuccess(Toast.LENGTH_SHORT, "Update");
-    }
+    }*/
 
-    public static void showSuccess(int duration, String prefix) {
+    private static void showSuccess(int duration, String message) {
         View view = LayoutInflater.from(context).inflate(R.layout.sw_toast, null, false);
         view.setBackground(context.getResources().getDrawable(R.drawable.toast_background_success));
 
         ImageView icon = view.findViewById(R.id.toast_icon);
         icon.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_success));
-        TextView message = view.findViewById(R.id.toast_message);
-        message.setText(prefix);
-        message.setTextColor(context.getResources().getColor(android.R.color.white));
+        TextView tvMessage = view.findViewById(R.id.toast_message);
+        tvMessage.setText(message);
+        tvMessage.setTextColor(context.getResources().getColor(android.R.color.white));
 
         Toast toast = new Toast(context);
         toast.setView(view);
@@ -121,35 +121,39 @@ public class SWToast {
         toast.show();
     }
 
-    public static void showLongSuccess(String prefix) {
-        showSuccess(Toast.LENGTH_LONG, prefix);
+    public static void showLongSuccess(String message) {
+        showSuccess(Toast.LENGTH_LONG, message);
     }
 
-    public static void showShortSuccess(String prefix) {
-        showSuccess(Toast.LENGTH_SHORT, prefix);
+    public static void showShortSuccess(String message) {
+        showSuccess(Toast.LENGTH_SHORT, message);
     }
+
+    /*
 
     public static void showSaveFailed() {
         showFailed(Toast.LENGTH_SHORT, "Save");
     }
 
-    public static void showDeleteFailed() {
-        showFailed(Toast.LENGTH_SHORT, "Delete");
+*/
+
+    public static void showShortFailed(String message) {
+        showFailed(Toast.LENGTH_SHORT, message);
     }
 
-    public static void showUpdateFailed() {
-        showFailed(Toast.LENGTH_SHORT, "Update");
+    public static void showLongFailed(String message) {
+        showFailed(Toast.LENGTH_SHORT, message);
     }
 
-    public static void showFailed(int duration, String prefix) {
+    private static void showFailed(int duration, String message) {
         View view = LayoutInflater.from(context).inflate(R.layout.sw_toast, null, false);
         view.setBackground(context.getResources().getDrawable(R.drawable.toast_background_error));
 
         ImageView icon = view.findViewById(R.id.toast_icon);
         icon.setImageDrawable(context.getResources().getDrawable(R.drawable.ic_failed));
-        TextView message = view.findViewById(R.id.toast_message);
-        message.setText(prefix + " failed");
-        message.setTextColor(context.getResources().getColor(android.R.color.white));
+        TextView msg = view.findViewById(R.id.toast_message);
+        msg.setText(message);
+        msg.setTextColor(context.getResources().getColor(android.R.color.white));
 
         Toast toast = new Toast(context);
         toast.setView(view);
