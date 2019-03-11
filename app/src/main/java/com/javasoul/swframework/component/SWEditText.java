@@ -32,21 +32,24 @@ public class SWEditText extends LinearLayout {
         String warning = "";
         String error = "";
         String placeholder = "";
+        Integer inputType = 0;
 
-        for(int i=0; i<attrs.getAttributeCount(); i++) {
+        for (int i = 0; i < attrs.getAttributeCount(); i++) {
             String name = attrs.getAttributeName(i);
             String value = attrs.getAttributeValue(i);
 
-            if(name.equals(getResources().getResourceName(R.attr.title))){
+            if (name.equals(getResources().getResourceName(R.attr.title))) {
                 title = value;
-            } else if(name.equals("description")) {
+            } else if (name.equals("description")) {
                 description = value;
-            } else if(name.equals("warning")) {
+            } else if (name.equals("warning")) {
                 warning = value;
-            } else if(name.equals("placeholder")) {
+            } else if (name.equals("placeholder")) {
                 placeholder = value;
-            } else if(name.equals("error")) {
+            } else if (name.equals("error")) {
                 error = value;
+            } else if (name.equals("inputType")) {
+                inputType = Integer.parseInt(value);
             }
         }
 
@@ -57,11 +60,12 @@ public class SWEditText extends LinearLayout {
         tvWarning.setText(warning);
         tvError.setText(error);
         txtEditText.setHint(placeholder);
+        txtEditText.setInputType(inputType);
 
-        changeComponentVisibility(tvTitle, title==null?"":title);
-        changeComponentVisibility(tvDescription, description==null?"":description);
-        changeComponentVisibility(tvError, error==null?"":error);
-        changeComponentVisibility(tvWarning, warning==null?"":warning);
+        changeComponentVisibility(tvTitle, title == null ? "" : title);
+        changeComponentVisibility(tvDescription, description == null ? "" : description);
+        changeComponentVisibility(tvError, error == null ? "" : error);
+        changeComponentVisibility(tvWarning, warning == null ? "" : warning);
     }
 
     private void initComponents() {
@@ -73,23 +77,23 @@ public class SWEditText extends LinearLayout {
     }
 
     public String getValue() {
-        return txtEditText.getText()==null?"":txtEditText.getText().toString();
+        return txtEditText.getText() == null ? "" : txtEditText.getText().toString();
     }
 
     public String getDescription() {
-        return tvDescription.getText()==null?"":tvDescription.getText().toString();
+        return tvDescription.getText() == null ? "" : tvDescription.getText().toString();
     }
 
     public String getTitle() {
-        return tvTitle.getText()==null?"":tvTitle.getText().toString();
+        return tvTitle.getText() == null ? "" : tvTitle.getText().toString();
     }
 
     public String getError() {
-        return tvError.getText()==null?"":tvError.getText().toString();
+        return tvError.getText() == null ? "" : tvError.getText().toString();
     }
 
     public String getWarning() {
-        return tvWarning.getText()==null?"":tvWarning.getText().toString();
+        return tvWarning.getText() == null ? "" : tvWarning.getText().toString();
     }
 
     public void setDescription(String description) {
@@ -145,7 +149,7 @@ public class SWEditText extends LinearLayout {
     }
 
     private void changeComponentVisibility(TextView textView, String value) {
-        if(value==null || value.equals("")) {
+        if (value == null || value.equals("")) {
             textView.setVisibility(View.GONE);
         } else {
             textView.setVisibility(View.VISIBLE);

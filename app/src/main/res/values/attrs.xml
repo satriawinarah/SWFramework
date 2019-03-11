@@ -7,6 +7,7 @@
         <attr name="placeholder" format="string"/>
         <attr name="warning" format="string"/>
         <attr name="error" format="string"/>
+        <attr name="android:inputType"/>
     </declare-styleable>
 
 </resources>
