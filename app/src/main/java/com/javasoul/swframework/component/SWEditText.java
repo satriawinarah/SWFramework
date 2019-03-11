@@ -20,7 +20,6 @@ public class SWEditText extends LinearLayout {
 
     public SWEditText(Context context, AttributeSet attrs) {
         super(context, attrs);
-
         init(context, attrs);
     }
 
