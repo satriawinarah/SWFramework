@@ -1,10 +1,7 @@
 package com.javasoul.swframework.component;
 
 import android.content.Context;
-import android.content.res.TypedArray;
-import android.support.annotation.StyleableRes;
 import android.util.AttributeSet;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -13,17 +10,6 @@ import android.widget.TextView;
 import com.javasoul.swframework.R;
 
 public class SWEditText extends LinearLayout {
-
-    @StyleableRes
-    int indexTitle = 0;
-    @StyleableRes
-    int indexDescription = 1;
-    @StyleableRes
-    int indexPlaceholder = 2;
-    @StyleableRes
-    int indexWarning = 3;
-    @StyleableRes
-    int indexError = 4;
 
     private TextView tvTitle;
     private TextView tvDescription;
@@ -41,15 +27,28 @@ public class SWEditText extends LinearLayout {
     private void init(Context context, AttributeSet attrs) {
         inflate(context, R.layout.sw_edit_text, this);
 
-        int[] sets = {R.attr.title, R.attr.description, R.attr.placeholder, R.attr.warning, R.attr.error};
+        String title = "";
+        String description = "";
+        String warning = "";
+        String error = "";
+        String placeholder = "";
 
-        TypedArray typedArray = context.obtainStyledAttributes(attrs, sets);
-        CharSequence title = typedArray.getText(indexTitle);
-        CharSequence description = typedArray.getText(indexDescription);
-        CharSequence placeholder = typedArray.getText(indexPlaceholder);
-        CharSequence warning = typedArray.getText(indexWarning);
-        CharSequence error = typedArray.getText(indexError);
-        typedArray.recycle();
+        for(int i=0; i<attrs.getAttributeCount(); i++) {
+            String name = attrs.getAttributeName(i);
+            String value = attrs.getAttributeValue(i);
+
+            if(name.equals(getResources().getResourceName(R.attr.title))){
+                title = value;
+            } else if(name.equals("description")) {
+                description = value;
+            } else if(name.equals("warning")) {
+                warning = value;
+            } else if(name.equals("placeholder")) {
+                placeholder = value;
+            } else if(name.equals("error")) {
+                error = value;
+            }
+        }
 
         initComponents();
 
@@ -59,17 +58,10 @@ public class SWEditText extends LinearLayout {
         tvError.setText(error);
         txtEditText.setHint(placeholder);
 
-        if(warning.equals("")) {
-            tvWarning.setVisibility(View.GONE);
-        } else {
-            tvWarning.setVisibility(View.VISIBLE);
-        }
-
-        if(error.equals("")) {
-            tvError.setVisibility(View.GONE);
-        } else {
-            tvError.setVisibility(View.VISIBLE);
-        }
+        changeComponentVisibility(tvTitle, title==null?"":title);
+        changeComponentVisibility(tvDescription, description==null?"":description);
+        changeComponentVisibility(tvError, error==null?"":error);
+        changeComponentVisibility(tvWarning, warning==null?"":warning);
     }
 
     private void initComponents() {
@@ -81,43 +73,51 @@ public class SWEditText extends LinearLayout {
     }
 
     public String getValue() {
-        return txtEditText.getText().toString();
+        return txtEditText.getText()==null?"":txtEditText.getText().toString();
     }
 
     public String getDescription() {
-        return tvDescription.getText().toString();
+        return tvDescription.getText()==null?"":tvDescription.getText().toString();
     }
 
     public String getTitle() {
-        return tvTitle.getText().toString();
+        return tvTitle.getText()==null?"":tvTitle.getText().toString();
     }
 
     public String getError() {
-        return tvError.getText().toString();
+        return tvError.getText()==null?"":tvError.getText().toString();
     }
 
     public String getWarning() {
-        return tvWarning.getText().toString();
+        return tvWarning.getText()==null?"":tvWarning.getText().toString();
     }
 
     public void setDescription(String description) {
         tvDescription.setText(description);
+        changeComponentVisibility(tvDescription, description);
     }
 
     public void setTitle(String title) {
         tvTitle.setText(title);
+        changeComponentVisibility(tvTitle, title);
     }
 
     public void setError(String error) {
         tvError.setText(error);
+        changeComponentVisibility(tvError, error);
     }
 
     public void setWarning(String warning) {
         tvWarning.setText(warning);
+        changeComponentVisibility(tvWarning, warning);
     }
 
     public void setPlaceholder(String placeholder) {
         txtEditText.setHint(placeholder);
+    }
+
+    public void setValue(String value) {
+        txtEditText.setText(value);
     }
 
     public String getPlaceholder() {
@@ -142,5 +142,13 @@ public class SWEditText extends LinearLayout {
 
     public EditText getEditText() {
         return txtEditText;
+    }
+
+    private void changeComponentVisibility(TextView textView, String value) {
+        if(value==null || value.equals("")) {
+            textView.setVisibility(View.GONE);
+        } else {
+            textView.setVisibility(View.VISIBLE);
+        }
     }
 }

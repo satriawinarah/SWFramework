@@ -5,8 +5,8 @@
         <attr name="title" format="string"/>
         <attr name="description" format="string"/>
         <attr name="placeholder" format="string"/>
-        <attr name="error" format="string"/>
         <attr name="warning" format="string"/>
+        <attr name="error" format="string"/>
     </declare-styleable>
 
 </resources>

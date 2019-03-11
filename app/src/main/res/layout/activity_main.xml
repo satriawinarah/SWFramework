@@ -12,10 +12,21 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:title="Title Test"
-        app:description="This is description"
         app:warning="This is warning"
-        app:error="This is error"
-        app:placeholder="Edit text placeholder"
+        app:placeholder="Placeholder test"
+        app:error="Error test"
+        app:description="desc test"
+        />
+
+    <com.javasoul.swframework.component.SWEditText
+        android:id="@+id/txt_custom2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:title="Title Test2"
+        app:warning="This is warning2"
+        app:placeholder="Placeholder test2"
+        app:error="Error test2"
+        app:description="desc test2"
         />
 
     <Spinner
