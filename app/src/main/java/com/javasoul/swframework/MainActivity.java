@@ -4,63 +4,51 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.Spinner;
 
+import com.javasoul.swframework.component.SWEditText;
 import com.javasoul.swframework.component.SWToast;
 
 public class MainActivity extends AppCompatActivity {
 
-    LinearLayout linearLayout;
-    Button btnError, btnInfo, btnWarning;
+    private SWEditText swEditText;
+    private Spinner cmbOption;
+    private Button btnChange;
+
+    private String[] options = new String[]{"Title","Placeholder","Description","Warning","Error"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        btnError = findViewById(R.id.btn_error);
-        btnInfo = findViewById(R.id.btn_info);
-        btnWarning = findViewById(R.id.btn_warning);
+        swEditText = findViewById(R.id.txt_custom);
+        cmbOption = findViewById(R.id.cmb_option);
+        btnChange = findViewById(R.id.btn_change);
 
-        /*linearLayout = findViewById(R.id.linearLayout);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, options);
+        cmbOption.setAdapter(adapter);
 
-
-        SWEditText swEditText = new SWEditText(this);
-        swEditText.setId(123);
-        swEditText.setCode("123");
-        swEditText.setTitle("TEst");
-        swEditText.setError("SWTest");
-        swEditText.setDescription("test");
-
-        final SWEditText swEditText2 = new SWEditText(this);
-        swEditText2.setId(1234);
-        swEditText2.setCode("1234");
-        swEditText2.setTitle("TEst2");
-        swEditText2.setError("Test2");
-        swEditText2.setDescription("test2");
-
-        linearLayout.addView(swEditText.build());
-        linearLayout.addView(swEditText2.build());*/
-
-        btnError.setOnClickListener(new View.OnClickListener() {
+        btnChange.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.e("TEST", new SWTestStorage(null).createTable());
-            }
-        });
+                String option = cmbOption.getSelectedItem().toString();
+                String value = swEditText.getValue();
 
-        btnInfo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
-
-        btnWarning.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                SWToast.showLongWarning("SWTest akkhfjhkas fhskfh jakhfa ");
+                if(option.equals("Title")) {
+                    swEditText.setTitle(value);
+                } else if(option.equals("Placeholder")) {
+                    swEditText.setPlaceholder(value);
+                } else if(option.equals("Description")) {
+                    swEditText.setDescription(value);
+                } else if(option.equals("Warning")) {
+                    swEditText.setWarning(value);
+                } else if(option.equals("Error")) {
+                    swEditText.setError(value);
+                }
             }
         });
     }

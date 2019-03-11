@@ -7,27 +7,25 @@
     tools:context=".MainActivity"
     android:orientation="vertical">
 
-    <LinearLayout
-        android:id="@+id/linearLayout"
+    <com.javasoul.swframework.component.SWEditText
+        android:id="@+id/txt_custom"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"></LinearLayout>
+        app:title="Title Test"
+        app:description="This is description"
+        app:warning="This is warning"
+        app:error="This is error"
+        app:placeholder="Edit text placeholder"
+        />
 
-    <Button
-        android:id="@+id/btn_error"
-        android:text="Show"
+    <Spinner
+        android:id="@+id/cmb_option"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"></Spinner>
 
     <Button
-        android:id="@+id/btn_info"
-        android:text="Show"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
-    <Button
-        android:id="@+id/btn_warning"
-        android:text="Show"
+        android:id="@+id/btn_change"
+        android:text="Change"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
