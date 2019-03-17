@@ -10,4 +10,14 @@
         <attr name="android:inputType"/>
     </declare-styleable>
 
+    <attr name="CustomActionBar" format="enum">
+        <enum name="default_action_bar" value="0"/>
+        <enum name="search_action_bar" value="1"/>
+        <enum name="save_action_bar" value="2"/>
+    </attr>
+
+    <declare-styleable name="CustomActionBar">
+        <attr name="action_bar_type"/>
+    </declare-styleable>
+
 </resources>
