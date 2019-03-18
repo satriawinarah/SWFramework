@@ -81,6 +81,7 @@ public class SWDialog {
         RelativeLayout header = dialog.findViewById(R.id.rl_dialog_header);
         header.setBackgroundColor(context.getResources().getColor(R.color.colorDarkRed));
         TextView titleDialog = dialog.findViewById(R.id.tv_dialog_title);
+        titleDialog.setTextColor(context.getResources().getColor(android.R.color.white));
         titleDialog.setText(title);
         TextView messageDialog = dialog.findViewById(R.id.tv_error_message);
         messageDialog.setText(message);
@@ -106,6 +107,7 @@ public class SWDialog {
         header.setBackgroundColor(context.getResources().getColor(R.color.colorDarkBlue));
         TextView titleDialog = dialog.findViewById(R.id.tv_dialog_title);
         titleDialog.setText(title);
+        titleDialog.setTextColor(context.getResources().getColor(android.R.color.white));
         TextView messageDialog = dialog.findViewById(R.id.tv_error_message);
         messageDialog.setText(message);
         Button btnCancel = dialog.findViewById(R.id.btn_cancel);
